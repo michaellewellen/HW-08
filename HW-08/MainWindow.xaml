@@ -4,9 +4,63 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HW_08"
+        xmlns:vm="clr-namespace:HW_08.ViewModel"
+        xmlns:view="clr-namespace:HW_08.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="HomeWork 8"
+        Height="700"
+        Width="800">
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+    <DockPanel>
+        <Ribbon Title="Homework 8"
+                DockPanel.Dock="Top">
+            <RibbonTab Header="Home">
+                <RibbonGroup Header="Actions">
+                    <RibbonButton Label="Demonstrate a TreeView"
+                                  LargeImageSource="/Resources/add.jpg"
+                                  ToolTipTitle="TreeView Demonstration"
+                                  ToolTipDescription="This will add a new tab which will demonstrate a TreeView"
+                                  Command="{Binding TreeViewDemonstration}" />
+                    <RibbonButton Label="Demonstrate a DataGrid"
+                                  LargeImageSource="/Resources/add.jpg"
+                                  ToolTipTitle="DataGrid Demonstration"
+                                  ToolTipDescription="This will add a new tab which will demonstrate a DataGrid"
+                                  Command="{Binding DataGridDemonstration}" />
+                    <RibbonButton Label="Mortgage Calculator"
+                                  LargeImageSource="/Resources/add.jpg"
+                                  ToolTipTitle="Mortgage Calculator"
+                                  ToolTipDescription="This will add a new tab which is my Mortgage Calculator"
+                                  Command="{Binding MortgageCalculatorDemonstration}" />
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+
+        <TabControl ItemSource="{Binding ChildViewModels}"
+                    SelectedItem="{Binding SelectedChildViewModel}">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Header}"/>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <ContentControl.Resources>
+                        <DataTemplate DataType="{x:Type vm:TreeViewViewModel}">
+                            <view:TreeViewView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vm:DataGridViewModel}">
+                            <view:DataGridView />
+                        </DataTemplate>
+                        <DataTemplate DataType="{x:Type vm:MortgageCalculatorViewModel}">
+                            <view:MortgageCalculatorView />
+                        </DataTemplate>
+                    </ContentControl.Resources>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+                    
+                    
+    </DockPanel>
 </Window>
