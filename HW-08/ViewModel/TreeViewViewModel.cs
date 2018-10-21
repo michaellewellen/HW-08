@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HW_08.ViewModel
 {
-    class TreeViewViewModel
+    public class TreeViewViewModel
     {
     }
 }

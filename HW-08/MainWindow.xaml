@@ -37,7 +37,7 @@
             </RibbonTab>
         </Ribbon>
 
-        <TabControl ItemSource="{Binding ChildViewModels}"
+        <TabControl ItemsSource="{Binding ChildViewModels}"
                     SelectedItem="{Binding SelectedChildViewModel}">
             <TabControl.ItemTemplate>
                 <DataTemplate>
@@ -46,17 +46,19 @@
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
                 <DataTemplate>
-                    <ContentControl.Resources>
-                        <DataTemplate DataType="{x:Type vm:TreeViewViewModel}">
-                            <view:TreeViewView />
-                        </DataTemplate>
-                        <DataTemplate DataType="{x:Type vm:DataGridViewModel}">
-                            <view:DataGridView />
-                        </DataTemplate>
-                        <DataTemplate DataType="{x:Type vm:MortgageCalculatorViewModel}">
-                            <view:MortgageCalculatorView />
-                        </DataTemplate>
-                    </ContentControl.Resources>
+                    <ContentControl Content="{Binding ViewModel}">
+                        <ContentControl.Resources>
+                            <DataTemplate DataType="{x:Type vm:TreeViewViewModel}">
+                                <view:TreeViewView />
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vm:DataGridViewModel}">
+                                <view:DataGridView />
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type vm:MortgageCalculatorViewModel}">
+                                <view:MortgageCalculatorView />
+                            </DataTemplate>
+                        </ContentControl.Resources>
+                    </ContentControl>
                 </DataTemplate>
             </TabControl.ContentTemplate>
         </TabControl>

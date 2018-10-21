@@ -17,7 +17,7 @@ namespace HW_08.Views
     /// <summary>
     /// Interaction logic for MortgageCalculatorView.xaml
     /// </summary>
-    public partial class MortgageCalculatorView : Window
+    public partial class MortgageCalculatorView : UserControl
     {
         public MortgageCalculatorView()
         {
