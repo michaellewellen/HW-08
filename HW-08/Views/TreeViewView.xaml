@@ -5,7 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HW_08.Views"
         mc:Ignorable="d" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource tBlockStyle}">
+            Lewellen Family Tree
+        </TextBlock>
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Vertical" >
+                <TextBlock Style="{StaticResource treeBlockStyle}">First Name</TextBlock>
+                <TextBox Text="{Binding FirstName}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Style="{StaticResource treeBlockStyle}">Last Name</TextBlock>
+                <TextBox Text="{Binding LastName}"/>
+            </StackPanel>
+            <Button Content="Add Relative"
+                    Style ="{StaticResource ButtonStyle}" 
+                    Command="{Binding AddRelative}"/>
+        </StackPanel>
+        <TreeView Grid.Column="1"
+                  ItemsSource="{Binding Family}">
+
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Relatives}">
+                    <TextBlock Text="{Binding FullName}"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>                    
+        </TreeView>
     </Grid>
 </UserControl>

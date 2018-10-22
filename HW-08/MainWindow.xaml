@@ -28,10 +28,10 @@
                                   ToolTipTitle="DataGrid Demonstration"
                                   ToolTipDescription="This will add a new tab which will demonstrate a DataGrid"
                                   Command="{Binding DataGridDemonstration}" />
-                    <RibbonButton Label="Mortgage Calculator"
+                    <RibbonButton Label="Demonstrate GroupBox and Expander"
                                   LargeImageSource="/Resources/add.jpg"
-                                  ToolTipTitle="Mortgage Calculator"
-                                  ToolTipDescription="This will add a new tab which is my Mortgage Calculator"
+                                  ToolTipTitle="GroupBox - Expander Example"
+                                  ToolTipDescription="This will add a new tab which will demonstrate an Expander and Group Box"
                                   Command="{Binding MortgageCalculatorDemonstration}" />
                 </RibbonGroup>
             </RibbonTab>

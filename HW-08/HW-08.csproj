@@ -73,6 +73,8 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\DataGridViewModel.cs" />
     <Compile Include="ViewModel\MortgageCalculatorViewModel.cs" />
+    <Compile Include="ViewModel\Payment.cs" />
+    <Compile Include="Relative.cs" />
     <Compile Include="ViewModel\TreeViewViewModel.cs" />
     <Compile Include="Views\DataGridView.xaml.cs">
       <DependentUpon>DataGridView.xaml</DependentUpon>
@@ -97,6 +99,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DataGridView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

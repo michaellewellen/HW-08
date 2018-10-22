@@ -35,6 +35,7 @@ namespace HW_08.ViewModel
         public RelayCommand TreeViewDemonstration => treeViewDemonstration ?? (treeViewDemonstration = new RelayCommand(
             () =>
             {
+
                 ChildViewModels.Add(new ChildControl("TreeView Demonstration", new TreeViewViewModel()));
                 SelectedChildViewModel = ChildViewModels.Last();
             }));
@@ -51,7 +52,7 @@ namespace HW_08.ViewModel
         public RelayCommand MortgageCalculatorDemonstration => mortgageCalculatorDemonstration ?? (mortgageCalculatorDemonstration = new RelayCommand(
             () =>
             {
-                ChildViewModels.Add(new ChildControl("Mortgage Calculator", new MortgageCalculatorViewModel()));
+                ChildViewModels.Add(new ChildControl("GroupView Expander", new MortgageCalculatorViewModel()));
                 SelectedChildViewModel = ChildViewModels.Last();
             }));
 

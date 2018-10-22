@@ -6,7 +6,64 @@
         xmlns:local="clr-namespace:HW_08.Views"
         mc:Ignorable="d"
        >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
+        <Expander
+                  Header="Expand to Order"
+                  IsExpanded="False">
+            <StackPanel>
+                <GroupBox Header="PIZZA">
+                    <StackPanel>
+                        <Label Content="Please Pick a Pizza"/>
+                        <RadioButton Content="Cheese" 
+                                     Command="{Binding MyCommand}" 
+                                     Name="Cheese" 
+                                     CommandParameter="{Binding ElementName=Cheese, Path=Content}"/>
+                        <RadioButton Content="Pepperoni"
+                                     Command="{Binding MyCommand}"
+                                     Name="Pepperoni"
+                                     CommandParameter="{Binding ElementName=Pepperoni, Path=Content}"/>
+                        <RadioButton Content="Sausage"
+                                     Command="{Binding MyCommand}"
+                                     Name="Sausage"
+                                     CommandParameter="{Binding ElementName=Sausage, Path=Content}"/>
+                        <RadioButton Content="Combo"
+                                     Command="{Binding MyCommand}"
+                                     Name="Combo"
+                                     CommandParameter="{Binding ElementName=Combo, Path=Content}"/>
+                        <TextBox Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Drink">
+                    <StackPanel>
+                        <Label Content="Please Pick a Pizza"/>
+                        <RadioButton Content="Pepsi" 
+                                     Command="{Binding DrinkCommand}" 
+                                     Name="Pepsi" 
+                                     CommandParameter="{Binding ElementName=Pepsi, Path=Content}"/>
+                        <RadioButton Content="Diet Pepsi"
+                                     Command="{Binding DrinkCommand}"
+                                     Name="Diet"
+                                     CommandParameter="{Binding ElementName=Diet, Path=Content}"/>
+                        <RadioButton Content="Root Beer"
+                                     Command="{Binding DrinkCommand}"
+                                     Name="Root"
+                                     CommandParameter="{Binding ElementName=Root, Path=Content}"/>
+                        <RadioButton Content="Dr. Pepper"
+                                     Command="{Binding DrinkCommand}"
+                                     Name="Dr"
+                                     CommandParameter="{Binding ElementName=Dr, Path=Content}"/>
+                        <TextBox Text="{Binding Path=Drink, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </Expander>
         
     </Grid>
 </UserControl>
