@@ -17,6 +17,30 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
+        public void TestPurchasePriceError()
+        {
+            var vm = new DataGridViewModel();
+            vm.PurchasePrice = 0;
+            Assert.AreEqual(vm[nameof(vm.PurchasePrice)], null);
+        }
+
+        [TestMethod]
+        public void TestInterestRateError()
+        {
+            var vm = new DataGridViewModel();
+            vm.IntSlider = 0;
+            Assert.AreEqual(vm[nameof(vm.PurchasePrice)], null);
+        }
+
+        [TestMethod]
+        public void TestLoanPeriorError()
+        {
+            var vm = new DataGridViewModel();
+            vm.YrsSlider = 0;
+            Assert.AreEqual(vm[nameof(vm.PurchasePrice)], null);
+        }
+
+        [TestMethod]
         public void TestCorrectNumberofPayments()
         {
             var vm = new DataGridViewModel();
@@ -48,5 +72,30 @@ namespace UnitTestProject1
             vm.YrsSlider = -4;
             Assert.AreEqual(vm[nameof(vm.YrsSlider)], "Mortgage Period must be a positive value");
         }
+
+        [TestMethod]
+        public void TestPurchasePriceErrorGoodCondition()
+        {
+            var vm = new DataGridViewModel();
+            vm.PurchasePrice = 100000;
+            Assert.AreEqual(vm[nameof(vm.PurchasePrice)], null);
+        }
+
+        [TestMethod]
+        public void TestIntSliderErrorGoodCondition()
+        {
+            var vm = new DataGridViewModel();
+            vm.IntSlider = 4;
+            Assert.AreEqual(vm[nameof(vm.IntSlider)],null);
+        }
+
+        [TestMethod]
+        public void TestYrsSliderErrorGoodCondition()
+        {
+            var vm = new DataGridViewModel();
+            vm.YrsSlider = 30;
+            Assert.AreEqual(vm[nameof(vm.YrsSlider)], null);
+        }
+
     }
 }
