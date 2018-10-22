@@ -51,15 +51,15 @@
         </TextBlock>
         <TextBox Style="{StaticResource tBoxStyle}"
                  Grid.Row="2"
-                 Text="{Binding PurchasePrice, StringFormat=c}"/>
+                 Text="{Binding PurchasePrice, StringFormat=c, ValidatesOnDataErrors=True}"/>
         <TextBox Style="{StaticResource tBoxStyle}"
                  Grid.Column="1"
                  Grid.Row="2"
-                 Text="{Binding IntSlider}"/>
+                 Text="{Binding IntSlider, ValidatesOnDataErrors=True}"/>
         <TextBox Style="{StaticResource tBoxStyle}"
                  Grid.Column="2"
                  Grid.Row="2"
-                 Text="{Binding YrsSlider}"/>
+                 Text="{Binding YrsSlider, ValidatesOnDataErrors=True}"/>
         <TextBox Style="{StaticResource tBoxStyle}"
                  Grid.Column="3"
                  Grid.Row="2"

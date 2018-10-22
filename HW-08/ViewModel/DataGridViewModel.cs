@@ -22,6 +22,7 @@ namespace HW_08.ViewModel
            
         }
 
+        
         private double purchasePrice;
         public double PurchasePrice
         {
@@ -43,7 +44,7 @@ namespace HW_08.ViewModel
             {
                 SetField(ref intSlider, value);
                 OnPropertyChanged(nameof(MortgagePayment));
-                if (YrsSlider !=0)
+                if (YrsSlider >=0)
                     Calculate();
             }
         }
@@ -79,11 +80,15 @@ namespace HW_08.ViewModel
             double d = (expo - 1) / ((IntSlider / 1200) * expo);
             double amount = PurchasePrice / d;
             MortgagePayment = Math.Round(amount, 2);
-
-            amortizationSchedule = new ObservableCollection<Payment>();
-            generatePaymentList();
-            OnPropertyChanged(nameof(AmortizationSchedule));
+            if (YrsSlider > 0)
+            {
+                amortizationSchedule = new ObservableCollection<Payment>();
+                generatePaymentList();
+                OnPropertyChanged(nameof(AmortizationSchedule));
+            }
         }
+
+        public Payment first { get; set; }
 
         private ObservableCollection<Payment> amortizationSchedule;
         public ObservableCollection<Payment> AmortizationSchedule
@@ -123,13 +128,13 @@ namespace HW_08.ViewModel
                 if (propertyName == nameof(YrsSlider))
                 {
                     if (YrsSlider >= 0) { return null; }
-                    else { return "Mortgage Period must be a postiive value"; }
+                    else { return "Mortgage Period must be a positive value"; }
                 }
 
                 if (propertyName == nameof(PurchasePrice))
                 {
                     if (PurchasePrice >= 0) { return null; }
-                    else { return "Purchase Price must be a postiive value"; }
+                    else { return "Purchase Price must be a positive value"; }
                 }
                 return null;
             }

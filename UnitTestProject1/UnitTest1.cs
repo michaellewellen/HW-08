@@ -1,5 +1,7 @@
 ﻿using System;
-using HW_08;
+using HW_08.ViewModel;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1
@@ -11,8 +13,40 @@ namespace UnitTestProject1
         public void TestDataGridCalculation()
         {
             var vm = new DataGridViewModel();
-            Assert.Equals(477, Math.Round(vm.MortgagePayment));
+            Assert.AreEqual(477, Math.Round(vm.MortgagePayment, 0));
+        }
 
+        [TestMethod]
+        public void TestCorrectNumberofPayments()
+        {
+            var vm = new DataGridViewModel();
+            
+            int modelTest = vm.AmortizationSchedule.Count;
+            Assert.AreEqual(vm.YrsSlider*12, modelTest);
+        }
+
+        [TestMethod]
+        public void TestPurchasePriceErrorCondition()
+        {
+            var vm = new DataGridViewModel();
+            vm.PurchasePrice = -4;
+            Assert.AreEqual(vm[nameof(vm.PurchasePrice)], "Purchase Price must be a positive value");
+        }
+
+        [TestMethod]
+        public void TestIntSliderErrorCondition()
+        {
+            var vm = new DataGridViewModel();
+            vm.IntSlider = -4;
+            Assert.AreEqual(vm[nameof(vm.IntSlider)], "Interest must be a positive value");
+        }
+
+        [TestMethod]
+        public void TestYrsSliderErrorCondition()
+        {
+            var vm = new DataGridViewModel();
+            vm.YrsSlider = -4;
+            Assert.AreEqual(vm[nameof(vm.YrsSlider)], "Mortgage Period must be a positive value");
         }
     }
 }
