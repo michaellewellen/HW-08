@@ -31,14 +31,14 @@ namespace HW_08.ViewModel
             set { SetField(ref selectedChildViewModel, value); }
         }
 
-        private RelayCommand treeViewDemonstration;
-        public RelayCommand TreeViewDemonstration => treeViewDemonstration ?? (treeViewDemonstration = new RelayCommand(
-            () =>
-            {
-
-                ChildViewModels.Add(new ChildControl("TreeView Demonstration", new TreeViewViewModel()));
-                SelectedChildViewModel = ChildViewModels.Last();
-            }));
+        //private RelayCommand treeViewDemonstration;
+        //public RelayCommand TreeViewDemonstration => treeViewDemonstration ?? (treeViewDemonstration = new RelayCommand(
+        //    () =>
+        //    {
+               
+        //        ChildViewModels.Add(new ChildControl("TreeView Demonstration", new TreeViewViewModel()));
+        //        SelectedChildViewModel = ChildViewModels.Last();
+        //    }));
 
         private RelayCommand dataGridDemonstration;
         public RelayCommand DataGridDemonstration => dataGridDemonstration ?? (dataGridDemonstration = new RelayCommand(
@@ -52,7 +52,7 @@ namespace HW_08.ViewModel
         public RelayCommand MortgageCalculatorDemonstration => mortgageCalculatorDemonstration ?? (mortgageCalculatorDemonstration = new RelayCommand(
             () =>
             {
-                ChildViewModels.Add(new ChildControl("GroupView Expander", new MortgageCalculatorViewModel()));
+                ChildViewModels.Add(new ChildControl("GroupView Expander", new PizzaViewModel()));
                 SelectedChildViewModel = ChildViewModels.Last();
             }));
 

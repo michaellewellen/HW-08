@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -9,40 +11,76 @@ using System.Threading.Tasks;
 
 namespace HW_08.ViewModel
 {
-    public class Relative:INotifyPropertyChanged
+    public class Person : INotifyPropertyChanged, IDataErrorInfo
     {
-        public Relative() : this(firstName: null, lastName: null) { }
-        
+        public Person() : this(firstName: null, lastName: null)
+        {
 
-        public Relative(string firstName=null, string lastName=null)
+        }
+
+        public Person(string firstName = null, string lastName = null)
         {
             FirstName = firstName;
             LastName = lastName;
-            FullName = FirstName + " " + LastName;
             Children.CollectionChanged += (s, e) => OnPropertyChanged(nameof(Children));
         }
-        private String firstName;
-        public String FirstName
+
+        public string Name
+        {
+            get { return $"{FirstName} {LastName}"; }
+        }
+
+        private decimal salary;
+        public decimal Salary
+        {
+            get { return salary; }
+            set { SetField(ref salary, value); }
+        }
+
+        private string firstName;
+        public string FirstName
         {
             get { return firstName; }
-            set { SetField(ref firstName, value); }
+            set
+            {
+                if (value?.Length > 100)
+                    throw new ArgumentOutOfRangeException(nameof(FirstName), value, "Cannot be > 10 characters.");
+                SetField(ref firstName, value);
+                OnPropertyChanged(nameof(Name));
+            }
         }
 
-        private String lastName;
-        public String LastName
+        private string lastName;
+        public string LastName
         {
-            get { return lastName; }
-            set { SetField(ref lastName, value); }
-        }
-        private String fullName;
-        public String FullName
-        {
-            get { return fullName; }
-            set { SetField(ref fullName, value); }
+            get => lastName;
+            set
+            {
+                SetField(ref lastName, value);
+                OnPropertyChanged(nameof(Name));
+            }
         }
 
-        private ObservableCollection<Relative> children;
-        public ObservableCollection<Relative> Children => children ?? (children = new ObservableCollection<Relative>());
+        private DateTime startDate;
+        public DateTime StartDate
+        {
+            get { return startDate; }
+            set { SetField(ref startDate, value); }
+        }
+
+        private string mugshotPath;
+        public string MugshotPath
+        {
+            get { return mugshotPath; }
+            set { SetField(ref mugshotPath, value); }
+        }
+
+        private ObservableCollection<Person> children;
+        public ObservableCollection<Person> Children => children ?? (children = new ObservableCollection<Person>());
+                               
+        private Dictionary<string, string> errors = new Dictionary<string, string>();
+        public string Error => null;
+        public string this[string columnName] => errors.ContainsKey(columnName) ? errors[columnName] : null;
 
         #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
@@ -60,5 +98,6 @@ namespace HW_08.ViewModel
             return true;
         }
         #endregion
+
     }
 }

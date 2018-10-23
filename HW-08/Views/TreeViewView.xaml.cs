@@ -25,11 +25,11 @@ namespace HW_08.Views
             InitializeComponent();
         }
 
-        //private void selectedRelative(object sender, RoutedPropertyChangedEventArgs<object> e)
+        //private void selectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         //{
         //    var vm = DataContext as TreeViewViewModel;
         //    if (vm != null)
-        //        vm.SelectedRelative = e.NewValue as Relative;
+        //        vm.SelectedPerson = e.NewValue as Person;
         //}
     }
 }

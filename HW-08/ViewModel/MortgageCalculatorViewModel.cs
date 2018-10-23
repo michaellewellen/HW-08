@@ -1,16 +1,12 @@
-﻿using GalaSoft.MvvmLight.CommandWpf;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace HW_08.ViewModel
 {
-    public class MortgageCalculatorViewModel : INotifyPropertyChanged
+    public class PizzaViewModel : INotifyPropertyChanged
     {
         public ICommand MyCommand { get; set; }
         public ICommand DrinkCommand { get; set; }
@@ -29,7 +25,7 @@ namespace HW_08.ViewModel
             set { SetField(ref drink, value); }
         }
 
-        public MortgageCalculatorViewModel()
+        public PizzaViewModel()
         {
             MyCommand = new RCommand(executemethod, canexecutemethod);
             DrinkCommand = new RCommand(executeDrink, canExecuteDrink);

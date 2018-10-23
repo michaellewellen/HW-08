@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HW_08.Views"
         mc:Ignorable="d" >
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles.xaml" />
@@ -38,16 +38,15 @@
             </StackPanel>
             <Button Content="Add Relative"
                     Style ="{StaticResource ButtonStyle}" 
-                    Command="{Binding AddRelative}"/>
+                    Command="{Binding AddSinglePerson}"/>
         </StackPanel>
-        <TreeView Grid.Column="1"
-                  ItemsSource="{Binding Family}">
-
+        <TreeView ItemsSource="{Binding Family}"
+                  SelectedItemChanged="selectedItemChanged">
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Relatives}">
-                    <TextBlock Text="{Binding FullName}"/>
+                <HierarchicalDataTemplate ItemsSource="{Binding Family}">
+                    <TextBlock Text="{Binding Name}" />
                 </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>                    
+            </TreeView.ItemTemplate>
         </TreeView>
-    </Grid>
+    </Grid>-->
 </UserControl>

@@ -48,13 +48,13 @@
                 <DataTemplate>
                     <ContentControl Content="{Binding ViewModel}">
                         <ContentControl.Resources>
-                            <DataTemplate DataType="{x:Type vm:TreeViewViewModel}">
+                            <!--<DataTemplate DataType="{x:Type vm:TreeViewViewModel}">
                                 <view:TreeViewView />
-                            </DataTemplate>
+                            </DataTemplate>-->
                             <DataTemplate DataType="{x:Type vm:DataGridViewModel}">
                                 <view:DataGridView />
                             </DataTemplate>
-                            <DataTemplate DataType="{x:Type vm:MortgageCalculatorViewModel}">
+                            <DataTemplate DataType="{x:Type vm:PizzaViewModel}">
                                 <view:MortgageCalculatorView />
                             </DataTemplate>
                         </ContentControl.Resources>
